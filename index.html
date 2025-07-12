@@ -2,53 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sanskar Shrivastava | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       background: #e3f2fd;
       color: #333;
       line-height: 1.6;
     }
-    a { text-decoration: none; color: #2196f3; }
+
+    a {
+      text-decoration: none;
+      color: #2196f3;
+    }
+
     header {
       background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 999;
     }
+
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      position: relative;
+      flex-wrap: wrap;
     }
+
     .logo {
       font-weight: 700;
       font-size: 1.5rem;
       color: #2196f3;
     }
+
     .nav-links {
       display: flex;
       gap: 1.5rem;
       list-style: none;
     }
+
     .nav-links a {
       font-weight: 500;
       transition: color 0.3s ease, transform 0.2s ease;
       position: relative;
     }
+
     .nav-links a:hover {
       color: #0d47a1;
       transform: scale(1.05);
     }
+
     .nav-links a::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       height: 2px;
@@ -59,14 +79,30 @@
       transition: transform 0.3s ease;
       transform-origin: right;
     }
+
     .nav-links a:hover::after {
       transform: scaleX(1);
       transform-origin: left;
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #2196f3;
+      z-index: 1000;
+    }
+
+    .menu-toggle svg {
+      width: 28px;
+      height: 28px;
+      fill: #2196f3;
+    }
+
     .hero {
       position: relative;
       height: 100vh;
-      background: url('./images/slide1.jpg') center center/cover no-repeat;
+      background: url("./images/slide1.jpg") center center/cover no-repeat;
       animation: slideShow 16s infinite ease-in-out;
       color: white;
       text-align: center;
@@ -75,47 +111,77 @@
       align-items: center;
       justify-content: center;
     }
+
     @keyframes slideShow {
-      0%, 100% { background-image: url('./images/slide1.jpg'); }
-      33% { background-image: url('./images/slide2.jpg'); }
-      66% { background-image: url('./images/1000034019.jpg'); }
+      0%, 100% {
+        background-image: url("./images/slide1.jpg");
+      }
+      33% {
+        background-image: url("./images/slide2.jpg");
+      }
+      66% {
+        background-image: url("./images/slide3.jpg");
+      }
     }
+
     .hero::after {
-      content: '';
+      content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
     }
+
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
-    .hero img {
+
+    .hero-content img {
       width: 140px;
       height: 140px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid white;
       margin-bottom: 20px;
+      transform: scale(1.2);
     }
+
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 10px;
     }
-    .hero span { color: #ffd700; }
+
+    .hero span {
+      color: #ffd700;
+    }
+
     .section {
       padding: 60px 20px;
       max-width: 1100px;
       margin: auto;
       text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease-in-out;
     }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
       position: relative;
     }
+
     .section h2::after {
-      content: '';
+      content: "";
       width: 60px;
       height: 3px;
       background: #2196f3;
@@ -123,6 +189,7 @@
       margin: 10px auto;
       border-radius: 2px;
     }
+
     .cards {
       display: flex;
       flex-wrap: wrap;
@@ -130,15 +197,20 @@
       justify-content: center;
       margin-top: 20px;
     }
+
     .card {
       background: white;
       padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       width: 250px;
       transition: transform 0.3s ease;
     }
-    .card:hover { transform: translateY(-5px); }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
     .skills {
       display: flex;
       flex-direction: column;
@@ -146,7 +218,11 @@
       max-width: 600px;
       margin: auto;
     }
-    .skill { text-align: left; }
+
+    .skill {
+      text-align: left;
+    }
+
     .bar {
       background: #ddd;
       height: 8px;
@@ -154,121 +230,97 @@
       overflow: hidden;
       margin-top: 5px;
     }
+
     .bar div {
       height: 100%;
       background: #2196f3;
       border-radius: 4px;
     }
-    .contact-info i { margin-right: 8px; color: #2196f3; }
-    .social-links { margin-top: 20px; }
+
+    .contact-info i {
+      margin-right: 8px;
+      color: #2196f3;
+    }
+
+    .social-links {
+      margin-top: 20px;
+    }
+
     .social-links a {
       margin: 0 10px;
       font-size: 1.5rem;
       color: #2196f3;
       transition: color 0.3s;
     }
-    .social-links a:hover { color: #0d47a1; }
+
+    .social-links a:hover {
+      color: #0d47a1;
+    }
+
     footer {
-      background: #1565c0;
+      background: #1e293b;
       color: white;
       text-align: center;
       padding: 50px 20px;
       margin-top: 60px;
     }
-    @media (max-width: 768px) {
-      .cards { flex-direction: column; align-items: center; }
-      .hero h1 { font-size: 2rem; }
+
+    html {
+      scroll-behavior: smooth;
     }
-    @keyframes slideShow {
-  0%   { background-image: url('./images/slide1.jpg'); }
-  33%  { background-image: url('./images/slide2.jpg'); }
-  66%  { background-image: url('./images/slide3.jpg'); }
-  90% { background-image: url('./images/slide1.jpg'); }
-}
 
-.hero {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
 
-.slide {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  z-index: 0;
-}
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background: white;
+        text-align: center;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+      }
 
-.slide1 { background-image: url('./images/slide1.jpg'); }
-.slide2 { background-image: url('./images/slide2.jpg'); }
-.slide3 { background-image: url('./images/slide3.jpg'); }
+      .nav-links.active {
+        display: flex !important;
+      }
 
-/* Animation cycle */
-@keyframes fadeInOut {
-  0%, 33% { opacity: 1; }
-  40%, 100% { opacity: 0; }
-}
+      .nav-links li {
+        padding: 15px 0;
+        border-top: 1px solid #ddd;
+      }
 
-/* Use animation delays for staggered fading */
-.slide1 {
-  animation: fadeInOut 12s infinite;
-  animation-delay: 0s;
-}
-.slide2 {
-  animation: fadeInOut 12s infinite;
-  animation-delay: 4s;
-}
-.slide3 {
-  animation: fadeInOut 12s infinite;
-  animation-delay: 8s;
-}
+      .hero h1 {
+        font-size: 2rem;
+      }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-content img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid white;
-  margin-bottom: 20px;
-  transform: scale(1.2); /* zoom in */
-}
-
-.section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.7s ease-in-out;
-}
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <nav class="navbar">
       <div class="logo">Sanskar</div>
-      <ul class="nav-links">
+      <div class="menu-toggle" id="menu-toggle">
+        <!-- SVG Hamburger -->
+        <svg viewBox="0 0 100 80" width="28" height="28" fill="#2196f3">
+          <rect width="100" height="10" rx="4"></rect>
+          <rect y="30" width="100" height="10" rx="4"></rect>
+          <rect y="60" width="100" height="10" rx="4"></rect>
+        </svg>
+      </div>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -278,20 +330,24 @@ html {
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <img src="./images/my-pic.png" alt="Profile Picture">
+      <img src="./images/my-pic.png" alt="Profile Picture" />
       <h1>Hi, I'm <span>Sanskar Shrivastava</span></h1>
       <p>Electronics & Communication Engineer | Aspiring SDE</p>
     </div>
   </section>
 
-  <section id="about" class="section">
+<section id="about" class="section">
     <h2>About Me</h2>
     <p>
-      I'm a final-year B.Tech student at MANIT Bhopal with a strong passion for software development, embedded systems, and web technologies.
-      I built <strong>Metro Mera Sathi</strong>, a smart metro route app, and an <strong>AI Voice Assistant</strong>.
-      Formerly admitted to IIT Jodhpur (B.tech in Chemical Engg.), I pivoted to ECE to follow my tech passion. I also solve a 3x3 Rubik’s Cube in under 10 seconds.
+      I'm a final-year B.Tech student at <strong>MANIT Bhopal</strong> with a strong passion for
+      software development, embedded systems, and web technologies. I built
+      <strong>Metro Mera Sathi</strong>, a smart metro route app, and an
+      <strong>AI Voice Assistant</strong>. Formerly admitted to ,<strong>IIT Jodhpur</strong>
+      (B.tech in Chemical Engg.), I pivoted to ECE to follow my tech passion. I
+      also solve a 3x3 Rubik’s Cube in under 10 seconds.
     </p>
     <div class="contact-info">
       <p><i class="fas fa-envelope"></i> sanskarshrivastava969@gmail.com</p>
@@ -299,8 +355,14 @@ html {
       <p><i class="fas fa-map-marker-alt"></i> Gwalior, MP, India</p>
     </div>
     <div class="social-links">
-      <a href="https://linkedin.com/in/sanskar-shrivastava-bba728316" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://github.com/sanskar-shrivastava" target="_blank"><i class="fab fa-github"></i></a>
+      <a
+        href="https://linkedin.com/in/sanskar-shrivastava-bba728316"
+        target="_blank"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+      <a href="https://github.com/sanskar-shrivastava" target="_blank"
+        ><i class="fab fa-github"></i
+      ></a>
     </div>
   </section>
 
@@ -323,35 +385,61 @@ html {
   <section id="skills" class="section">
     <h2>Skills</h2>
     <div class="skills">
-      <div class="skill"><span>DSA & OOPS </span><div class="bar"><div style="width:90%"></div></div></div>
-      <div class="skill"><span> HTML / CSS / JavaScript / APIs</span><div class="bar"><div style="width:85%"></div></div></div>
-      <div class="skill"><span> C/C++ / PYTHON / SQL</span><div class="bar"><div style="width:80%"></div></div></div>
-      <div class="skill"><span> Operating System / Computer Networks / DBMS </span><div class="bar"><div style="width:75%"></div></div></div>
+      <div class="skill">
+        <span>DSA &amp; OOPS </span>
+        <div class="bar"><div style="width:90%"></div></div>
+      </div>
+      <div class="skill">
+        <span> HTML / CSS / JavaScript / APIs</span>
+        <div class="bar"><div style="width:85%"></div></div>
+      </div>
+      <div class="skill">
+        <span> C/C++ / PYTHON / SQL</span>
+        <div class="bar"><div style="width:80%"></div></div>
+      </div>
+      <div class="skill">
+        <span> Operating System / Computer Networks / DBMS </span>
+        <div class="bar"><div style="width:75%"></div></div>
+      </div>
     </div>
   </section>
 
   <section id="projects" class="section">
-    <h2>Projects & Experience</h2>
+    <h2>Projects &amp; Experience</h2>
     <div class="cards">
       <div class="card">
         <h3>Metro Mera Sathi</h3>
-        <p>Smart metro portal for Bhopal using Dijkstra's algorithm & Leaflet.js</p>
+        <p>Smart metro portal for Bhopal using Dijkstra's algorithm &amp; Leaflet.js</p>
         <a href="https://bhopal-metro.vercel.app/" target="_blank">Live</a> |
-        <a href="https://github.com/sanskar-shrivastava/metro_mera_saathi.git" target="_blank">GitHub</a>
+        <a
+          href="https://github.com/sanskar-shrivastava/metro_mera_saathi.git"
+          target="_blank"
+          >GitHub</a
+        >
       </div>
       <div class="card">
         <h3>Weather App</h3>
-        <p>Real-time weather app using OpenWeatherMap API & geolocation</p>
-        <a href="https://weather-portal-eight.vercel.app/" target="_blank">Live</a> |
-        <a href="https://github.com/sanskar-shrivastava/weather_portal" target="_blank">GitHub</a>
+        <p>Real-time weather app using OpenWeatherMap API &amp; geolocation</p>
+        <a href="https://weather-portal-eight.vercel.app/" target="_blank"
+          >Live</a
+        >
+        |
+        <a
+          href="https://github.com/sanskar-shrivastava/weather_portal"
+          target="_blank"
+          >GitHub</a
+        >
       </div>
       <div class="card">
         <h3>AI Voice Assistant</h3>
-        <p>Multilingual voice assistant built in Python with GUI & API integration</p>
+        <p>Multilingual voice assistant built in Python with GUI &amp; API integration</p>
       </div>
       <div class="card">
         <h3>BHEL Internship</h3>
-        <p>Frontend developer intern (May–June 2025). Worked on internal web tools using HTML, CSS, JS</p>
+        <p>
+          Frontend developer intern (May–June 2025). Worked on internal web tools
+          using HTML, CSS, JS
+        </p>
       </div>
     </div>
   </section>
@@ -361,7 +449,7 @@ html {
     <div class="cards">
       <div class="card">
         <h3>Hobbies</h3>
-        <p>Speedcubing (under 10s), tech gadgets, reading about AI & astronomy</p>
+        <p>Speedcubing (under 10s), tech gadgets, reading about AI &amp; astronomy</p>
       </div>
       <div class="card">
         <h3>Soft Skills</h3>
@@ -375,24 +463,43 @@ html {
   </section>
 
   <footer>
-    <p>&copy; 2025 Sanskar Shrivastava | Made with ❤️</p>
-    <p>Thank you for visiting my personal portfolio website.</p>
+    <p>&copy; 2025 Sanskar Shrivastava | Made with❤️</p>
+    <p>JEE Advanced Top 6.8% | JEE Mains Top 1.9% | Former IIT Jodhpur Student (UG)</p>
+    <div style="margin-top: 20px;">
+      <a href="https://www.linkedin.com/in/sanskar-shrivastava-bba728316" target="_blank" style="color: #fff; margin: 0 10px;">
+        <strong>LinkedIn</strong>
+      </a> |
+      <a href="https://github.com/sanskar-shrivastava" target="_blank" style="color: #fff; margin: 0 10px;">
+        <strong>GitHub</strong>
+      </a> 
+    </div>
+    <p style="margin-top:10px;">Thanks for visiting my portfolio website.</p>
   </footer>
 
+  <!-- Script -->
   <script>
-  const sections = document.querySelectorAll('.section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+    // Navbar toggle
+    const toggleBtn = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
     });
-  }, { threshold: 0.1 });
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-</script>
+    // Animate sections on scroll
+    const sections = document.querySelectorAll(".section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
+    sections.forEach((section) => observer.observe(section));
+  </script>
 </body>
 </html>
