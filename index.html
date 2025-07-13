@@ -476,30 +476,62 @@
     <p style="margin-top:10px;">Thanks for visiting my portfolio website.</p>
   </footer>
 
-  <!-- Script -->
-  <script>
-    // Navbar toggle
-    const toggleBtn = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
+ <script>
+  // Navbar toggle
+  const toggleBtn = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
 
-    toggleBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+  toggleBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  // Close navbar when clicking outside
+  document.addEventListener("click", function (event) {
+    const isClickInsideMenu = navLinks.contains(event.target);
+    const isClickOnToggle = toggleBtn.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnToggle) {
+      navLinks.classList.remove("active");
+    }
+  });
+
+  // Close navbar on link click (mobile)
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
     });
+  });
 
-    // Animate sections on scroll
-    const sections = document.querySelectorAll(".section");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+  // Animate sections on scroll
+  const sections = document.querySelectorAll(".section");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  sections.forEach((section) => observer.observe(section));
 
-    sections.forEach((section) => observer.observe(section));
-  </script>
+  // Hero section background slideshow (Safari-compatible)
+  const hero = document.querySelector(".hero");
+  const slides = [
+    "./images/slide1.jpg",
+    "./images/slide2.jpg",
+    "./images/slide3.jpg"
+  ];
+  let slideIndex = 0;
+
+  setInterval(() => {
+    slideIndex = (slideIndex + 1) % slides.length;
+    hero.style.backgroundImage = `url('${slides[slideIndex]}')`;
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundPosition = "center";
+  }, 5000);
+</script>
+
 </body>
 </html>
